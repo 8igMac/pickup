@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({
+class PassengerHomePage extends StatelessWidget {
+  const PassengerHomePage({
     Key? key,
   }) : super(key: key);
 
@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
     return Container(
       foregroundDecoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/home_page.png'),
+          image: AssetImage('assets/images/passenger_home_page.png'),
           fit: BoxFit.fill,
         ),
       ),
