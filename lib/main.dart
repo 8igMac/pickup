@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickup/friend_page.dart';
+import 'package:pickup/passenger_home_page.dart';
 import 'package:pickup/schedule_page.dart';
 
-import 'home_page.dart';
+import 'driver_home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,22 +37,104 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
-  final pages = <Widget>[
-    HomePage(),
-    SchedulePage(),
+  bool _isDriver = true;
+
+  final _driverPages = <Widget>[
+    DriverHomePage(),
+    DriverSchedulePage(),
+    FriendPage(),
+  ];
+
+  final _passengerPages = <Widget>[
+    PassengerHomePage(),
+    PassengerSchedulePage(),
     FriendPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.home),
-          onPressed: null,
+      drawer: Drawer(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 150.h,
+              child: DrawerHeader(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Jing Ting Lin',
+                          style: TextStyle(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        SizedBox(width: 6.w),
+                        Icon(
+                          Icons.check_circle,
+                          color: Colors.green,
+                          size: 9.w,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(_isDriver ? Icons.local_taxi : Icons.emoji_people),
+                        CupertinoSwitch(
+                          value: _isDriver,
+                          onChanged: (value) {
+                            setState(() {
+                              _isDriver = value;
+                            });
+                          },
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 23.w, vertical: 14.h),
+              ),
+            ),
+            ListTile(
+              title: Text('1'),
+              onTap: null,
+            ),
+            ListTile(
+              title: Text('1'),
+              onTap: null,
+            ),
+            ListTile(
+              title: Text('1'),
+              onTap: null,
+            ),
+            ListTile(
+              title: Text('1'),
+              onTap: null,
+            ),
+            ListTile(
+              title: Text('1'),
+              onTap: null,
+            ),
+            ListTile(
+              title: Text('1'),
+              onTap: null,
+            ),
+            Spacer(),
+            ListTile(
+              title: Text('last'),
+              onTap: null,
+            ),
+          ],
         ),
       ),
-      body: pages.elementAt(_selectedIndex),
+      appBar: AppBar(),
+      body: _isDriver
+          ? _driverPages.elementAt(_selectedIndex)
+          : _passengerPages.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
