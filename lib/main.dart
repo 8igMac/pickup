@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pickup/color.dart';
 import 'package:pickup/friend_page.dart';
 import 'package:pickup/passenger_home_page.dart';
 import 'package:pickup/schedule_page.dart';
@@ -131,7 +132,19 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       ),
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: MyColors.grey,
+        actions: [
+          IconButton(
+            onPressed: null,
+            iconSize: 30,
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
       body: _isDriver
           ? _driverPages.elementAt(_selectedIndex)
           : _passengerPages.elementAt(_selectedIndex),
