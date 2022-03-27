@@ -6,4 +6,5 @@ class MyColors {
   MyColors._();
 
   static const Color yellow = Color(0xFFFEE45C);
+  static const Color grey = Color(0xFFDCDCDC);
 }
