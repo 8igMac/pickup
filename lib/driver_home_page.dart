@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickup/color.dart';
+import 'package:pickup/edit_schedule_page.dart';
 
 class DriverHomePage extends StatelessWidget {
   const DriverHomePage({
@@ -42,11 +43,18 @@ class DriverHomePage extends StatelessWidget {
                     fixedSize:
                         MaterialStateProperty.all<Size>(Size(325.w, 56.h)),
                   ),
-                  onPressed: null,
                   child: Text(
                     'EDIT SCHEDULE',
                     style: TextStyle(color: Colors.black),
                   ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditSchedulePage(),
+                      ),
+                    );
+                  },
                 ),
                 SizedBox(height: 24.h),
                 Container(
