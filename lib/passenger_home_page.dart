@@ -10,7 +10,7 @@ class PassengerHomePage extends StatelessWidget {
     return Container(
       foregroundDecoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/passenger_home_page.png'),
+          image: AssetImage('assets/images/passenger_home.png'),
           fit: BoxFit.fill,
         ),
       ),
