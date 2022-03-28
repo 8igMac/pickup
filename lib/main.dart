@@ -7,6 +7,7 @@ import 'package:pickup/passenger_home_page.dart';
 import 'package:pickup/schedule_page.dart';
 
 import 'driver_home_page.dart';
+import 'gift_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -136,7 +137,14 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: MyColors.grey,
         actions: [
           IconButton(
-            onPressed: null,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GiftPage(),
+                ),
+              );
+            },
             iconSize: 30,
             icon: Icon(
               Icons.notifications,
