@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'match_page.dart';
+import 'navigation_page.dart';
 
 class DriverSchedulePage extends StatelessWidget {
   const DriverSchedulePage({
@@ -26,13 +27,23 @@ class DriverSchedulePage extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Container(
-            width: 363.w,
-            height: 481.h,
-            foregroundDecoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/middle_schedule.png'),
-                fit: BoxFit.fill,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NavigationPage(),
+                ),
+              );
+            },
+            child: Container(
+              width: 363.w,
+              height: 481.h,
+              foregroundDecoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/middle_schedule.png'),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
           ),
