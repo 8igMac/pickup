@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickup/color.dart';
+import 'package:pickup/complete_page.dart';
 
 class NavigationPage extends StatelessWidget {
   const NavigationPage({Key? key}) : super(key: key);
@@ -52,7 +53,14 @@ class NavigationPage extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all<Color>(MyColors.red),
               fixedSize: MaterialStateProperty.all<Size>(Size(379.w, 51.h)),
             ),
-            onPressed: null,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CompletePage(),
+                ),
+              );
+            },
             child: Text(
               'FINISH',
               style: TextStyle(
