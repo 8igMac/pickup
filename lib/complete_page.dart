@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pickup/rating_page.dart';
 
 import 'color.dart';
 
@@ -62,7 +63,14 @@ class CompletePage extends StatelessWidget {
                       MaterialStateProperty.all<Color>(MyColors.red),
                   fixedSize: MaterialStateProperty.all<Size>(Size(157.w, 51.h)),
                 ),
-                onPressed: null,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RatingPage(),
+                    ),
+                  );
+                },
                 child: Text(
                   'NEXT',
                   style: TextStyle(
