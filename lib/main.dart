@@ -134,6 +134,15 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       appBar: AppBar(
+        title: const Text(
+          'Pick Up',
+          style: TextStyle(
+            color: Color.fromARGB(255, 90, 89, 89),
+            fontSize: 30,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: MyColors.grey,
         actions: [
           IconButton(
@@ -141,14 +150,14 @@ class _MainPageState extends State<MainPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => GiftPage(),
+                  builder: (context) => const GiftPage(),
                 ),
               );
             },
             iconSize: 30,
-            icon: Icon(
+            icon: const Icon(
               Icons.notifications,
-              color: Colors.black,
+              color: Color.fromARGB(255, 131, 128, 128),
             ),
           ),
         ],
@@ -156,19 +165,41 @@ class _MainPageState extends State<MainPage> {
       body: _isDriver
           ? _driverPages.elementAt(_selectedIndex)
           : _passengerPages.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar:
+          // PersistentTabView(
+          //   context,
+          //   controller: _controller,
+          //   screens: _isDriver ? _driverPages : _passengerPages,
+          //   items: _navBarsItems(),
+          //   confineInSafeArea: true,
+          //   backgroundColor: Colors.grey,
+          //   navBarHeight: 60.h,
+          //   handleAndroidBackButtonPress: true,
+          //   resizeToAvoidBottomInset: false,
+          //   stateManagement: false,
+          //   hideNavigationBarWhenKeyboardShows: true,
+          //   popAllScreensOnTapOfSelectedTab: true,
+          //   popActionScreens: PopActionScreensType.all,
+          //   navBarStyle: NavBarStyle.style2,
+          //   screenTransitionAnimation: const ScreenTransitionAnimation(
+          //     animateTabTransition: true,
+          //     curve: Curves.ease,
+          //     duration: Duration(milliseconds: 200),
+          //   ),
+          // ),
+          BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'school',
+            icon: Icon(Icons.schedule_sharp),
+            label: 'schedule',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'business',
+            icon: Icon(Icons.chat),
+            label: 'chat',
           ),
         ],
         currentIndex: _selectedIndex,
