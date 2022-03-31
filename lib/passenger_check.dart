@@ -46,7 +46,7 @@ class PassengerCheckPageState extends State<PassengerCheckPage> {
       body: Container(
         foregroundDecoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/pessenger_check.png'),
+            image: AssetImage('assets/images/passenger_check.png'),
             fit: BoxFit.fill,
           ),
         ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'gift_page.dart';
 import 'package:pickup/color.dart';
-import 'passenger_home_page.dart';
 import 'start.dart';
 
 class PassengerFinishPage extends StatefulWidget {

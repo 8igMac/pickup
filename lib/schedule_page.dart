@@ -87,7 +87,7 @@ class SchedulePageState extends State<PassengerSchedulePage> {
     return Container(
       foregroundDecoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/pessenger_schedule.png'),
+          image: AssetImage('assets/images/passenger_schedule.png'),
           fit: BoxFit.fill,
         ),
       ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickup/color.dart';
 import 'gift_page.dart';
-import 'pessenger_check.dart';
-import 'pessenger_finish_page.dart';
+import 'passenger_check.dart';
+import 'passenger_finish_page.dart';
 
 class PassengerHomePage extends StatelessWidget {
   const PassengerHomePage({
