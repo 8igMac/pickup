@@ -22,7 +22,7 @@ class NavigationPage extends StatelessWidget {
           SizedBox(height: 29.h),
           Container(
             width: 379.w,
-            height: 566.h,
+            height: 516.h,
             foregroundDecoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/navigation_map.png'),

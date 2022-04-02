@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'color.dart';
 
-class MatchPage extends StatelessWidget {
-  const MatchPage({Key? key}) : super(key: key);
+class PassengerMatchPage extends StatelessWidget {
+  const PassengerMatchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class MatchPage extends StatelessWidget {
         children: [
           Container(
             width: 428.w,
-            height: 746.h,
+            height: 716.h,
             foregroundDecoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/match.png'),

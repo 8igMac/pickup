@@ -11,8 +11,9 @@ class RatingPage extends StatelessWidget {
     return Scaffold(
         body: Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          SizedBox(height: 59.h),
+          SizedBox(height: 20.h),
           Container(
             width: 389.w,
             height: 143.h,
@@ -23,10 +24,9 @@ class RatingPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 36.h),
           Container(
             width: 322.w,
-            height: 354.h,
+            height: 334.h,
             foregroundDecoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/girl.jpg'),
@@ -34,15 +34,14 @@ class RatingPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 41.h),
           Container(
             padding: EdgeInsets.only(
               left: 43.w,
               right: 43.w,
-              top: 29.h,
+              top: 20.h,
+              bottom: 20.h,
             ),
             width: 389.w,
-            height: 265.h,
             decoration: BoxDecoration(
               color: MyColors.grey,
               borderRadius: BorderRadius.circular(25.r),
@@ -70,32 +69,31 @@ class RatingPage extends StatelessWidget {
                     Icon(Icons.star, size: 40.w, color: Colors.white),
                   ],
                 ),
-                SizedBox(height: 36.h),
-                TextButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(MyColors.red),
-                    fixedSize:
-                        MaterialStateProperty.all<Size>(Size(157.w, 51.h)),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    'SENT',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.sp,
-                    ),
-                  ),
-                ),
               ],
+            ),
+          ),
+          TextButton(
+            style: ButtonStyle(
+              backgroundColor:
+              MaterialStateProperty.all<Color>(MyColors.red),
+              fixedSize:
+              MaterialStateProperty.all<Size>(Size(157.w, 51.h)),
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+            child: Text(
+              'SENT',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24.sp,
+              ),
             ),
           ),
         ],
       ),
-    ));
+        ));
   }
 }
