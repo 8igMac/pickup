@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'schedule_start_page.dart';
 import 'color.dart';
 
 class PassengerMatchPage extends StatelessWidget {
@@ -14,7 +15,7 @@ class PassengerMatchPage extends StatelessWidget {
         children: [
           Container(
             width: 428.w,
-            height: 716.h,
+            height: 700.h,
             foregroundDecoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/match.png'),
@@ -22,14 +23,16 @@ class PassengerMatchPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 48.h),
+          SizedBox(height: 45.h),
           TextButton(
             style: ButtonStyle(
               backgroundColor:
                   MaterialStateProperty.all<Color>(MyColors.orange),
               fixedSize: MaterialStateProperty.all<Size>(Size(338.w, 72.h)),
             ),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
             child: Text(
               'Receive',
               style: TextStyle(
