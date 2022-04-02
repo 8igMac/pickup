@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'match_page.dart';
 import 'navigation_page.dart';
+import 'schedule_start_page.dart';
 
 class DriverSchedulePage extends StatelessWidget {
   const DriverSchedulePage({
@@ -21,12 +22,16 @@ class DriverSchedulePage extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => NavigationPage(),
+              //   ),
+              // );
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NavigationPage(),
-                ),
-              );
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PassengerMatchedPage()));
             },
             child: Container(
               width: 363.w,

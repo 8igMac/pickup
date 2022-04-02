@@ -4,11 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickup/color.dart';
 import 'package:pickup/friend_page.dart';
 import 'package:pickup/match_page.dart';
-import 'package:pickup/passenger_home_page.dart';
+import 'package:pickup/passenger/home_page.dart';
 import 'package:pickup/schedule_page.dart';
 
 import 'driver_home_page.dart';
 import 'gift_page.dart';
+import 'passenger/driver_info_page.dart';
+import 'passenger/driver_start_page.dart';
 
 GlobalKey<NavigatorState> _pageNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -65,21 +67,30 @@ class _MainPageState extends State<MainPage> {
           print('Current route: ${settings.name}'); //debug
           if (settings.name == '/driver_matched') {
             return MaterialPageRoute(
-              builder: (context) => Scaffold(
-                appBar: AppBar(),
-                body: Center(
-                  child: Text('Driver matched'),
-                ),
+              builder: (context) => const Scaffold(
+                // appBar: AppBar(),
+                // body: Center(
+                //   child: Text('Driver matched'),
+                body: DriverInfoPage(),
               ),
             );
           } else if (settings.name == '/driver_started') {
             return MaterialPageRoute(
-              builder: (context) => Scaffold(
-                appBar: AppBar(),
-                body: Center(
-                  child: Text('Driver started'),
-                ),
-              ),
+              builder: (context) => const Scaffold(
+                  // appBar: AppBar(),
+                  // body: Center(
+                  //   child: Text('Driver started'),
+                  // ),
+                  body: DriverStartPage()),
+            );
+          } else if (settings.name == '/driver_started') {
+            return MaterialPageRoute(
+              builder: (context) => const Scaffold(
+                  // appBar: AppBar(),
+                  // body: Center(
+                  //   child: Text('Driver started'),
+                  // ),
+                  body: DriverStartPage()),
             );
           } else if (settings.name == '/new_friend') {
             return MaterialPageRoute(

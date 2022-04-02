@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'gift_page.dart';
+import '../gift_page.dart';
 import 'package:pickup/color.dart';
-import 'start.dart';
+import '../star.dart';
 
 class PassengerFinishPage extends StatefulWidget {
   const PassengerFinishPage({Key? key}) : super(key: key);
@@ -53,10 +53,6 @@ class PassengerFinishPageState extends State<PassengerFinishPage> {
       ),
       body: Column(
         children: [
-          // SizedBox(
-          //   height: 20.h,
-          // ),
-
           Container(
               height: 160.h,
               width: 424.w,
@@ -86,7 +82,7 @@ class PassengerFinishPageState extends State<PassengerFinishPage> {
           ),
           Container(
             width: 390.w,
-            height: 600.h,
+            height: 530.h,
             decoration: const BoxDecoration(
               color: Color.fromARGB(255, 216, 212, 212),
               borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -137,7 +133,7 @@ class PassengerFinishPageState extends State<PassengerFinishPage> {
                 ),
                 Container(
                   width: 350.w,
-                  height: 390.h,
+                  height: 330.h,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 255, 255, 255),
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),

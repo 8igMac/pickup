@@ -74,12 +74,11 @@ class RatingPage extends StatelessWidget {
           ),
           TextButton(
             style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all<Color>(MyColors.red),
-              fixedSize:
-              MaterialStateProperty.all<Size>(Size(157.w, 51.h)),
+              backgroundColor: MaterialStateProperty.all<Color>(MyColors.red),
+              fixedSize: MaterialStateProperty.all<Size>(Size(157.w, 51.h)),
             ),
             onPressed: () {
+              Navigator.pop(context);
               Navigator.pop(context);
               Navigator.pop(context);
               Navigator.pop(context);
@@ -94,6 +93,6 @@ class RatingPage extends StatelessWidget {
           ),
         ],
       ),
-        ));
+    ));
   }
 }

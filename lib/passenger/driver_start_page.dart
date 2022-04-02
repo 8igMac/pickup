@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pickup/color.dart';
 
-class PassengerCheckPage extends StatefulWidget {
-  const PassengerCheckPage({Key? key}) : super(key: key);
+class DriverStartPage extends StatefulWidget {
+  const DriverStartPage({Key? key}) : super(key: key);
 
   @override
-  State<PassengerCheckPage> createState() => PassengerCheckPageState();
+  State<DriverStartPage> createState() => DriverStartPageState();
 }
 
-class PassengerCheckPageState extends State<PassengerCheckPage> {
+class DriverStartPageState extends State<DriverStartPage> {
   @override
   Widget build(BuildContext context) {
     String ratingValue;
@@ -46,7 +46,7 @@ class PassengerCheckPageState extends State<PassengerCheckPage> {
       body: Container(
         foregroundDecoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/passenger_check.png'),
+            image: AssetImage('assets/images/driver_start.png'),
             fit: BoxFit.fill,
           ),
         ),
