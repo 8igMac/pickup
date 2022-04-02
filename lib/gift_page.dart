@@ -27,7 +27,7 @@ class _GiftPageState extends State<GiftPage> {
             },
             child: Container(
               width: 428.w,
-              height: 746.h,
+              height: 740.h,
               foregroundDecoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(_giftIsOpened
@@ -38,7 +38,7 @@ class _GiftPageState extends State<GiftPage> {
               ),
             ),
           ),
-          SizedBox(height: 48.h),
+          SizedBox(height: 30.h),
           TextButton(
             style: ButtonStyle(
               backgroundColor:

@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickup/color.dart';
 import 'package:pickup/friend_page.dart';
+import 'package:pickup/match_page.dart';
 import 'package:pickup/passenger_home_page.dart';
 import 'package:pickup/schedule_page.dart';
 
 import 'driver_home_page.dart';
 import 'gift_page.dart';
+
+GlobalKey<NavigatorState> _pageNavigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
   runApp(const MyApp());
@@ -56,138 +59,199 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 150.h,
-              child: DrawerHeader(
+      body: Navigator(
+        key: _pageNavigatorKey,
+        onGenerateRoute: (settings) {
+          print('Current route: ${settings.name}'); //debug
+          if (settings.name == '/driver_matched') {
+            return MaterialPageRoute(
+              builder: (context) => Scaffold(
+                appBar: AppBar(),
+                body: Center(
+                  child: Text('Driver matched'),
+                ),
+              ),
+            );
+          } else if (settings.name == '/driver_started') {
+            return MaterialPageRoute(
+              builder: (context) => Scaffold(
+                appBar: AppBar(),
+                body: Center(
+                  child: Text('Driver started'),
+                ),
+              ),
+            );
+          } else if (settings.name == '/new_friend') {
+            return MaterialPageRoute(
+              builder: (context) => Scaffold(
+                appBar: AppBar(),
+                body: Center(
+                  child: Text('New Friend'),
+                ),
+              ),
+            );
+          }
+
+          return MaterialPageRoute(
+            builder: (context) => Scaffold(
+              drawer: Drawer(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Jing Ting Lin',
-                          style: TextStyle(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
+                    SizedBox(
+                      height: 150.h,
+                      child: DrawerHeader(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Jing Ting Lin',
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(width: 6.w),
+                                Icon(
+                                  Icons.check_circle,
+                                  color: Colors.green,
+                                  size: 9.w,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(_isDriver
+                                    ? Icons.local_taxi
+                                    : Icons.emoji_people),
+                                CupertinoSwitch(
+                                  value: _isDriver,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _isDriver = value;
+                                    });
+                                  },
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                        SizedBox(width: 6.w),
-                        Icon(
-                          Icons.check_circle,
-                          color: Colors.green,
-                          size: 9.w,
-                        ),
-                      ],
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 23.w, vertical: 14.h),
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(_isDriver ? Icons.local_taxi : Icons.emoji_people),
-                        CupertinoSwitch(
-                          value: _isDriver,
-                          onChanged: (value) {
-                            setState(() {
-                              _isDriver = value;
-                            });
-                          },
-                        ),
-                      ],
-                    )
+                    ListTile(
+                      title: Text('1'),
+                      onTap: null,
+                    ),
+                    ListTile(
+                      title: Text('1'),
+                      onTap: null,
+                    ),
+                    ListTile(
+                      title: Text('1'),
+                      onTap: null,
+                    ),
+                    ListTile(
+                      title: Text('1'),
+                      onTap: null,
+                    ),
+                    ListTile(
+                      title: Text('1'),
+                      onTap: null,
+                    ),
+                    ListTile(
+                      title: Text('1'),
+                      onTap: null,
+                    ),
+                    Spacer(),
+                    ListTile(
+                      title: Text('last'),
+                      onTap: null,
+                    ),
                   ],
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 23.w, vertical: 14.h),
               ),
-            ),
-            ListTile(
-              title: Text('1'),
-              onTap: null,
-            ),
-            ListTile(
-              title: Text('1'),
-              onTap: null,
-            ),
-            ListTile(
-              title: Text('1'),
-              onTap: null,
-            ),
-            ListTile(
-              title: Text('1'),
-              onTap: null,
-            ),
-            ListTile(
-              title: Text('1'),
-              onTap: null,
-            ),
-            ListTile(
-              title: Text('1'),
-              onTap: null,
-            ),
-            Spacer(),
-            ListTile(
-              title: Text('last'),
-              onTap: null,
-            ),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        title: const Text(
-          'Pick Up',
-          style: TextStyle(
-            color: Color.fromARGB(255, 90, 89, 89),
-            fontSize: 30,
-            fontStyle: FontStyle.italic,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: MyColors.grey,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const GiftPage(),
+              appBar: AppBar(
+                title: const Text(
+                  'Pick Up',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 90, 89, 89),
+                    fontSize: 30,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              );
-            },
-            iconSize: 30,
-            icon: const Icon(
-              Icons.notifications,
-              color: Color.fromARGB(255, 131, 128, 128),
+                backgroundColor: MyColors.grey,
+                actions: [
+                  PopupMenuButton(
+                    offset: const Offset(0, 50),
+                    icon: const Icon(
+                      Icons.notifications,
+                      color: Color.fromARGB(255, 131, 128, 128),
+                    ),
+                    onSelected: (value) {
+                      switch (value) {
+                        case 'driver matched':
+                          _pageNavigatorKey.currentState!
+                              .pushNamed('/driver_matched');
+                          break;
+                        case 'driver started':
+                          _pageNavigatorKey.currentState!
+                              .pushNamed('/driver_started');
+                          break;
+                        case 'passenger matched':
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PassengerMatchPage(),
+                            ),
+                          );
+                          break;
+                        case 'new friend':
+                          _pageNavigatorKey.currentState!
+                              .pushNamed('/new_friend');
+                          break;
+                        case 'gift':
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GiftPage(),
+                            ),
+                          );
+                          break;
+                        default:
+                          print('Unknown notification type.');
+                      }
+                    },
+                    itemBuilder: (BuildContext context) {
+                      final choices = <String>[
+                        'driver matched',
+                        'driver started',
+                        'passenger matched',
+                        'new friend',
+                        'gift'
+                      ];
+                      return choices.map((String choice) {
+                        return PopupMenuItem<String>(
+                          value: choice,
+                          child: Text(choice),
+                        );
+                      }).toList();
+                    },
+                  ),
+                ],
+              ),
+              body: _isDriver
+                  ? _driverPages.elementAt(_selectedIndex)
+                  : _passengerPages.elementAt(_selectedIndex),
             ),
-          ),
-        ],
+          );
+        },
       ),
-      body: _isDriver
-          ? _driverPages.elementAt(_selectedIndex)
-          : _passengerPages.elementAt(_selectedIndex),
-      bottomNavigationBar:
-          // PersistentTabView(
-          //   context,
-          //   controller: _controller,
-          //   screens: _isDriver ? _driverPages : _passengerPages,
-          //   items: _navBarsItems(),
-          //   confineInSafeArea: true,
-          //   backgroundColor: Colors.grey,
-          //   navBarHeight: 60.h,
-          //   handleAndroidBackButtonPress: true,
-          //   resizeToAvoidBottomInset: false,
-          //   stateManagement: false,
-          //   hideNavigationBarWhenKeyboardShows: true,
-          //   popAllScreensOnTapOfSelectedTab: true,
-          //   popActionScreens: PopActionScreensType.all,
-          //   navBarStyle: NavBarStyle.style2,
-          //   screenTransitionAnimation: const ScreenTransitionAnimation(
-          //     animateTabTransition: true,
-          //     curve: Curves.ease,
-          //     duration: Duration(milliseconds: 200),
-          //   ),
-          // ),
-          BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

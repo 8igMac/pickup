@@ -10,21 +10,13 @@ class DriverHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   foregroundDecoration: BoxDecoration(
-    //     image: DecorationImage(
-    //       image: AssetImage('assets/images/driver_home_page.png'),
-    //       fit: BoxFit.fill,
-    //     ),
-    //   ),
-    // );
     return Padding(
       padding: EdgeInsets.only(
         left: 32.w,
         right: 32.w,
-        top: 46.h,
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             width: 364.w,
@@ -101,7 +93,6 @@ class DriverHomePage extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 38.h),
           Container(
             width: 364.w,
             height: 150.h,

@@ -11,14 +11,6 @@ class DriverSchedulePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   foregroundDecoration: BoxDecoration(
-    //     image: DecorationImage(
-    //       image: AssetImage('assets/images/schedule_page.png'),
-    //       fit: BoxFit.fill,
-    //     ),
-    //   ),
-    // );
     return Padding(
       padding: EdgeInsets.only(
         left: 33.w,
@@ -42,27 +34,6 @@ class DriverSchedulePage extends StatelessWidget {
               foregroundDecoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/middle_schedule.png'),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 67.h),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MatchPage(),
-                ),
-              );
-            },
-            child: Container(
-              width: 120.w,
-              height: 72.h,
-              foregroundDecoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/envelope.png'),
                   fit: BoxFit.fill,
                 ),
               ),
