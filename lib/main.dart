@@ -69,26 +69,26 @@ class _MainPageState extends State<MainPage> {
   ];
 
   var _notifications = <Noti>[
-    Noti(
-      type: NotiType.gift,
-      content: 'You got a gift from Annie.',
-    ),
-    Noti(
-      type: NotiType.newFriend,
-      content: "Anny want's to be friend with you.",
-    ),
-    Noti(
-      type: NotiType.driverMatched,
-      content: 'We got you a driver.',
-    ),
-    Noti(
-      type: NotiType.passengerMatched,
-      content: 'We got you a passenger',
-    ),
-    Noti(
-      type: NotiType.driverStarted,
-      content: 'Your driver had started.',
-    ),
+    // Noti(
+    //   type: NotiType.gift,
+    //   content: 'You got a gift from Annie.',
+    // ),
+    // Noti(
+    //   type: NotiType.newFriend,
+    //   content: "Anny want's to be friend with you.",
+    // ),
+    // Noti(
+    //   type: NotiType.driverMatched,
+    //   content: 'We got you a driver.',
+    // ),
+    // Noti(
+    //   type: NotiType.passengerMatched,
+    //   content: 'We got you a passenger',
+    // ),
+    // Noti(
+    //   type: NotiType.driverStarted,
+    //   content: 'Your driver had started.',
+    // ),
   ];
   late StreamSubscription<Noti> _subscription;
 
