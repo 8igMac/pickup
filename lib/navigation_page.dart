@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickup/color.dart';
 import 'package:pickup/complete_page.dart';
+import 'package:pickup/server.dart';
+import 'package:provider/provider.dart';
 
 class NavigationPage extends StatelessWidget {
   const NavigationPage({Key? key}) : super(key: key);
@@ -54,6 +56,10 @@ class NavigationPage extends StatelessWidget {
               fixedSize: MaterialStateProperty.all<Size>(Size(379.w, 51.h)),
             ),
             onPressed: () {
+              // Notify server when driver finished.
+              final server = Provider.of<Server>(context, listen: false);
+              server.driverFinished();
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
