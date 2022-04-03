@@ -9,6 +9,7 @@ import 'package:pickup/match_page.dart';
 import 'package:pickup/passenger/finish_page.dart';
 import 'package:pickup/passenger/home_page.dart';
 import 'package:pickup/schedule_page.dart';
+import 'package:pickup/schedule_start_page.dart';
 import 'package:pickup/server.dart';
 import 'package:provider/provider.dart';
 
@@ -278,12 +279,23 @@ class _MainPageState extends State<MainPage> {
                               .pushNamed('/driver_started');
                           break;
                         case NotiType.passengerMatched:
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => PassengerMatchPage(),
+                          //   ),
+                          // );
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PassengerMatchPage(),
+                              builder: (context) {
+                                return PassengerMatchedPage();
+                              },
                             ),
                           );
+                          setState(() {
+                            _selectedIndex = 1;
+                          });
                           break;
                         case NotiType.newFriend:
                           _pageNavigatorKey.currentState!

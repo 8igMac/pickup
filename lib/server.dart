@@ -57,5 +57,15 @@ class Server extends ChangeNotifier {
       print('Choose driver error.');
     }
   }
+
+  Future<void> chooseDriver() async {
+    final response = await http.get(
+      Uri.parse('http://$ip:$port/api/choose_driver/$_id'),
+    );
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else {
+      print('Choose driver error.');
+    }
   }
 }
