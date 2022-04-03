@@ -59,8 +59,8 @@ class InsertPageState extends State<InsertPage> {
         ],
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          SizedBox(height: 20.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -152,7 +152,6 @@ class InsertPageState extends State<InsertPage> {
               )
             ],
           ),
-          SizedBox(height: 40.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -278,7 +277,6 @@ class InsertPageState extends State<InsertPage> {
               )
             ],
           ),
-          SizedBox(height: 40.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -344,7 +342,6 @@ class InsertPageState extends State<InsertPage> {
               )
             ],
           ),
-          SizedBox(height: 40.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -358,7 +355,6 @@ class InsertPageState extends State<InsertPage> {
               buildTextField('leave a message', messageController),
             ],
           ),
-          SizedBox(height: 80.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
