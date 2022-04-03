@@ -1,28 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pickup/color.dart';
 
-import 'start_page.dart';
-
-class DriverStartPage extends StatefulWidget {
-  const DriverStartPage({Key? key}) : super(key: key);
+class StartPage extends StatefulWidget {
+  const StartPage({Key? key}) : super(key: key);
 
   @override
-  State<DriverStartPage> createState() => DriverStartPageState();
+  State<StartPage> createState() => StartPageState();
 }
 
-class DriverStartPageState extends State<DriverStartPage> {
-  void initState() {
-    super.initState();
-    jumpPage();
-  }
-
-  void jumpPage() {
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const StartPage()));
-    });
-  }
-
+class StartPageState extends State<StartPage> {
   @override
   Widget build(BuildContext context) {
     String ratingValue;
@@ -48,6 +34,7 @@ class DriverStartPageState extends State<DriverStartPage> {
           IconButton(
             onPressed: () {
               Navigator.of(context).pop();
+              Navigator.of(context).pop();
             },
             iconSize: 30,
             icon: const Icon(
@@ -60,7 +47,7 @@ class DriverStartPageState extends State<DriverStartPage> {
       body: Container(
         foregroundDecoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/driver_start.png'),
+            image: AssetImage('assets/images/start.png'),
             fit: BoxFit.fill,
           ),
         ),
