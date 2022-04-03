@@ -7,6 +7,7 @@ class EditSchedulePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.only(
           left: 51.w,
@@ -14,11 +15,16 @@ class EditSchedulePage extends StatelessWidget {
           top: 143.h,
           bottom: 147.h,
         ),
-        child: Container(
-          foregroundDecoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/schedule.png'),
-              fit: BoxFit.fill,
+        child: GestureDetector(
+          onTap: () {
+            // TODO: add schedule
+          },
+          child: Container(
+            foregroundDecoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/schedule.png'),
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         ),
