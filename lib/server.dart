@@ -90,4 +90,38 @@ class Server extends ChangeNotifier {
       print('Choose driver error.');
     }
   }
+
+  Future<void> driverRate(int score) async {
+    final response = await http.post(
+      Uri.parse('http://$_ip:$_port/api/rating_score/driver/$_id'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, String>{
+        'rating': score.toString(),
+      }),
+    );
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else {
+      print('Rating error');
+    }
+  }
+
+  Future<void> passengerRate(int score) async {
+    final response = await http.post(
+      Uri.parse('http://$_ip:$_port/api/rating_score/passenger/$_id'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, String>{
+        'rating': score.toString(),
+      }),
+    );
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else {
+      print('Rating error.');
+    }
+  }
 }

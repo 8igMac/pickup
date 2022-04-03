@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pickup/server.dart';
+import 'package:provider/provider.dart';
 
 import 'color.dart';
 
@@ -77,7 +79,11 @@ class RatingPage extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all<Color>(MyColors.red),
               fixedSize: MaterialStateProperty.all<Size>(Size(157.w, 51.h)),
             ),
-            onPressed: () {
+            onPressed: () async {
+              // TODO: Driver rate.
+              final server = Provider.of<Server>(context, listen: false);
+              await server.driverRate(5);
+
               Navigator.pop(context);
               Navigator.pop(context);
               Navigator.pop(context);

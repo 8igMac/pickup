@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import '../gift_page.dart';
 import 'package:pickup/color.dart';
+import '../server.dart';
 import '../star.dart';
 
 class PassengerFinishPage extends StatefulWidget {
@@ -60,12 +62,18 @@ class PassengerFinishPageState extends State<PassengerFinishPage> {
               child: ElevatedButton(
                 child: Container(
                     child: InkWell(
-                        onTap: () {
+                        onTap: () async {
                           // Navigator.push(
                           //     context,
                           //     MaterialPageRoute(
                           //         builder: (context) =>
                           //             const PassengerHomePage()));
+
+                          // TODO: passenger rate.
+                          final server = Provider.of<Server>(context, listen: false);
+                          await server.passengerRate(5);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
                           Navigator.pop(context);
                         },
                         child: const Image(
