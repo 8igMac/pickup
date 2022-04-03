@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pickup/color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pickup/server.dart';
+import 'package:provider/provider.dart';
 
 import 'navigation_page.dart';
 
@@ -51,7 +53,11 @@ class PassengerMatchedPageState extends State<PassengerMatchedPage> {
             width: 500.w,
             height: 710.h,
             child: InkWell(
-                onTap: () {
+                onTap: () async {
+                  // Notify server.
+                  final server = Provider.of<Server>(context, listen: false);
+                  await server.driverLocation();
+
                   Navigator.push(
                       context,
                       MaterialPageRoute(
