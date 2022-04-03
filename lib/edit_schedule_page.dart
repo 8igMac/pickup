@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pickup/server.dart';
+import 'package:provider/provider.dart';
 
 class EditSchedulePage extends StatelessWidget {
   const EditSchedulePage({Key? key}) : super(key: key);
@@ -16,8 +18,15 @@ class EditSchedulePage extends StatelessWidget {
           bottom: 147.h,
         ),
         child: GestureDetector(
-          onTap: () {
-            // TODO: add schedule
+          onTap: () async {
+            final server = Provider.of<Server>(context, listen: false);
+            await server.registerDriver();
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text('Registered as a driver.'),
+                duration: Duration(seconds: 1),
+              ),
+            );
           },
           child: Container(
             foregroundDecoration: BoxDecoration(

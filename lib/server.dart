@@ -31,7 +31,7 @@ class Server extends ChangeNotifier {
           print('Received data: ${json.toString()}');
           if (json['type'] != null && json['content'] != null) {
             _controller.add(Noti.fromJson(json));
-          } else if(json['id'] != null) {
+          } else if (json['id'] != null) {
             _id = json['id'];
           } else {
             print('Unknown data format.');
@@ -47,11 +47,15 @@ class Server extends ChangeNotifier {
 
   int get id => _id;
 
-  static Future<void> registerDriver() async {
-    // final _client = http.Client();
-    // var request = http.Request(
-    //   'POST',
-    //   Uri.parse('http://192.168.0.4:3000/api/subscribe'),
-    // );
+  Future<void> registerDriver() async {
+    final response = await http.get(
+      Uri.parse('http://$ip:$port/api/register_driver/$_id'),
+    );
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else {
+      print('Choose driver error.');
+    }
+  }
   }
 }
