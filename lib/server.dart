@@ -8,15 +8,15 @@ import 'noti.dart';
 class Server extends ChangeNotifier {
   StreamController<Noti> _controller = StreamController.broadcast();
   late int _id;
-  String ip = '192.168.0.4';
-  String port = '3000';
+  String _ip = '192.168.0.4';
+  String _port = '3000';
 
   Server() {
     try {
       final _client = http.Client();
       var request = http.Request(
         'GET',
-        Uri.parse('http://$ip:$port/api/subscribe'),
+        Uri.parse('http://$_ip:$_port/api/subscribe'),
       );
 
       request.headers['Cache-Control'] = 'no-cache';
@@ -49,7 +49,7 @@ class Server extends ChangeNotifier {
 
   Future<void> registerDriver() async {
     final response = await http.get(
-      Uri.parse('http://$ip:$port/api/register_driver/$_id'),
+      Uri.parse('http://$_ip:$_port/api/register_driver/$_id'),
     );
     if (response.statusCode == 200) {
       print(response.body);
@@ -60,7 +60,7 @@ class Server extends ChangeNotifier {
 
   Future<void> chooseDriver() async {
     final response = await http.get(
-      Uri.parse('http://$ip:$port/api/choose_driver/$_id'),
+      Uri.parse('http://$_ip:$_port/api/choose_driver/$_id'),
     );
     if (response.statusCode == 200) {
       print(response.body);
@@ -71,7 +71,18 @@ class Server extends ChangeNotifier {
 
   Future<void> driverLocation() async {
     final response = await http.get(
-      Uri.parse('http://$ip:$port/api/driver_location/$_id'),
+      Uri.parse('http://$_ip:$_port/api/driver_location/$_id'),
+    );
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else {
+      print('Choose driver error.');
+    }
+  }
+
+  Future<void> driverFinished() async {
+    final response = await http.get(
+      Uri.parse('http://$_ip:$_port/api/driver_finished/$_id'),
     );
     if (response.statusCode == 200) {
       print(response.body);
