@@ -1,16 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickup/color.dart';
 import 'package:pickup/friend_page.dart';
 import 'package:pickup/match_page.dart';
+import 'package:pickup/passenger/finish_page.dart';
 import 'package:pickup/passenger/home_page.dart';
 import 'package:pickup/schedule_page.dart';
+import 'package:pickup/server.dart';
+import 'package:provider/provider.dart';
 
 import 'driver_home_page.dart';
 import 'gift_page.dart';
 import 'passenger/driver_info_page.dart';
 import 'passenger/driver_start_page.dart';
+import 'noti.dart';
 
 GlobalKey<NavigatorState> _pageNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -27,8 +33,11 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(428, 926),
       builder: () {
-        return MaterialApp(
-          home: const MainPage(),
+        return ChangeNotifierProvider<Server>(
+          create: (context) => Server(),
+          child: MaterialApp(
+            home: const MainPage(),
+          ),
         );
       },
     );
@@ -57,6 +66,57 @@ class _MainPageState extends State<MainPage> {
     PassengerSchedulePage(),
     FriendPage(),
   ];
+
+  var _notifications = <Noti>[
+    Noti(
+      type: NotiType.gift,
+      content: 'You got a gift from Annie.',
+    ),
+    Noti(
+      type: NotiType.newFriend,
+      content: "Anny want's to be friend with you.",
+    ),
+    Noti(
+      type: NotiType.driverMatched,
+      content: 'We got you a driver.',
+    ),
+    Noti(
+      type: NotiType.passengerMatched,
+      content: 'We got you a passenger',
+    ),
+    Noti(
+      type: NotiType.driverStarted,
+      content: 'Your driver had started.',
+    ),
+  ];
+  late StreamSubscription<Noti> _subscription;
+
+  @override
+  void initState() {
+    final server = Provider.of<Server>(context, listen: false);
+    _subscription = server.notifications.listen(
+      (notification) async {
+        if (notification.type == NotiType.driverFinishd) {
+          _pageNavigatorKey.currentState!.push(
+            MaterialPageRoute(
+              builder: (context) => PassengerFinishPage(),
+            ),
+          );
+        } else {
+          setState(() {
+            _notifications.add(notification);
+          });
+        }
+      },
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -197,23 +257,27 @@ class _MainPageState extends State<MainPage> {
                 ),
                 backgroundColor: MyColors.grey,
                 actions: [
-                  PopupMenuButton(
+                  PopupMenuButton<Noti>(
                     offset: const Offset(0, 50),
                     icon: const Icon(
                       Icons.notifications,
                       color: Color.fromARGB(255, 131, 128, 128),
                     ),
-                    onSelected: (value) {
-                      switch (value) {
-                        case 'driver matched':
+                    onSelected: (notification) {
+                      // Remove the notification one opened.
+                      _notifications.remove(notification);
+
+                      // Action to take when tapped on the notification.
+                      switch (notification.type) {
+                        case NotiType.driverMatched:
                           _pageNavigatorKey.currentState!
                               .pushNamed('/driver_matched');
                           break;
-                        case 'driver started':
+                        case NotiType.driverStarted:
                           _pageNavigatorKey.currentState!
                               .pushNamed('/driver_started');
                           break;
-                        case 'passenger matched':
+                        case NotiType.passengerMatched:
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -221,11 +285,11 @@ class _MainPageState extends State<MainPage> {
                             ),
                           );
                           break;
-                        case 'new friend':
+                        case NotiType.newFriend:
                           _pageNavigatorKey.currentState!
                               .pushNamed('/new_friend');
                           break;
-                        case 'gift':
+                        case NotiType.gift:
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -238,21 +302,29 @@ class _MainPageState extends State<MainPage> {
                       }
                     },
                     itemBuilder: (BuildContext context) {
-                      final choices = <String>[
-                        'driver matched',
-                        'driver started',
-                        'passenger matched',
-                        'new friend',
-                        'gift'
-                      ];
-                      return choices.map((String choice) {
-                        return PopupMenuItem<String>(
-                          value: choice,
-                          child: Text(choice),
-                        );
-                      }).toList();
+                      const notiIcon = {
+                        NotiType.gift: Icons.card_giftcard,
+                        NotiType.newFriend: Icons.people,
+                        NotiType.driverStarted: Icons.location_on,
+                        NotiType.driverMatched: Icons.local_taxi,
+                        NotiType.passengerMatched: Icons.emoji_people,
+                      };
+
+                      return _notifications.map(
+                        (noti) {
+                          return PopupMenuItem<Noti>(
+                            value: noti,
+                            child: ListTile(
+                              visualDensity: VisualDensity.compact,
+                              contentPadding: EdgeInsets.zero,
+                              leading: Icon(notiIcon[noti.type]),
+                              title: Text(noti.content),
+                            ),
+                          );
+                        },
+                      ).toList();
                     },
-                  ),
+                  )
                 ],
               ),
               body: _isDriver
