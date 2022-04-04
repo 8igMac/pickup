@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 import 'noti.dart';
@@ -8,10 +9,15 @@ import 'noti.dart';
 class Server extends ChangeNotifier {
   StreamController<Noti> _controller = StreamController.broadcast();
   late int _id;
-  String _ip = '192.168.0.4';
-  String _port = '3000';
+  late final String? _ip;
+  late final String? _port;
 
   Server() {
+
+    print("HOST: ${dotenv.env['HOST']}, PORT: ${dotenv.env['PORT']}");//debug
+    _ip = dotenv.env['HOST'];
+    _port = dotenv.env['PORT'];
+
     try {
       final _client = http.Client();
       var request = http.Request(
