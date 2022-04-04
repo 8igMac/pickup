@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pickup/color.dart';
 import 'package:pickup/friend_page.dart';
@@ -21,7 +22,8 @@ import 'noti.dart';
 
 GlobalKey<NavigatorState> _pageNavigatorKey = GlobalKey<NavigatorState>();
 
-void main() {
+Future main() async {
+  await dotenv.load(fileName: '.env');
   runApp(const MyApp());
 }
 
