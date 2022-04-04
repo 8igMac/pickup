@@ -31,12 +31,13 @@ class PassengerHomePage extends StatelessWidget {
                   child: const Image(
                       image: AssetImage("assets/images/whereToGo.png"),
                       fit: BoxFit.fill))),
-          SizedBox(
-            height: 400.h,
-            width: 428.w,
-            child: const Image(
-              image: AssetImage('assets/images/history_map.png'),
-              fit: BoxFit.fill,
+          Expanded(
+            child: SizedBox(
+              width: 428.w,
+              child: const Image(
+                image: AssetImage('assets/images/history_map.png'),
+                fit: BoxFit.fill,
+              ),
             ),
           )
         ],
