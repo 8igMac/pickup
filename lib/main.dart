@@ -57,6 +57,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   bool _isDriver = true;
+  bool _newNoti = false;
 
   final _driverPages = <Widget>[
     DriverHomePage(),
@@ -108,6 +109,7 @@ class _MainPageState extends State<MainPage> {
         } else {
           setState(() {
             _notifications.add(notification);
+            _newNoti = true;
           });
         }
       },
@@ -262,13 +264,17 @@ class _MainPageState extends State<MainPage> {
                 actions: [
                   PopupMenuButton<Noti>(
                     offset: const Offset(0, 50),
-                    icon: const Icon(
-                      Icons.notifications,
+                    icon: Icon(
+                      _newNoti? Icons.notification_add : Icons.notifications,
                       color: Color.fromARGB(255, 131, 128, 128),
                     ),
                     onSelected: (notification) {
                       // Remove the notification one opened.
                       _notifications.remove(notification);
+
+                      setState(() {
+                        _newNoti = false;
+                      });
 
                       // Action to take when tapped on the notification.
                       switch (notification.type) {
