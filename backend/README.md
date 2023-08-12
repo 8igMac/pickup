@@ -16,7 +16,7 @@ $ npm run dev
 $ npm run serve
 ```
 
-# Deployment
+## Deployment
 - Build docker image.
 ```sh
 $ docker build -t pickup-backend .
